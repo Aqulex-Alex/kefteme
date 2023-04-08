@@ -101,29 +101,3 @@ while game:
         score += 1
     clock.tick(FPS)
     display.update()
-
-game1 = False
-while game1:
-    window.blit(background,(0, 0))
-    player.reset()
-    player.update()
-    monsters.draw(window)
-    monsters.update()
-    bullets.draw(window)
-    bullets.update()
-    text_lose = font1.render("Попущено:" + str(lost), True, (255, 255, 255))
-    text_win = font1.render("Избито:" + str(score), True, (255, 255, 255))
-    window.blit(text_lose,(0,20))
-    window.blit(text_win,(0,0))
-    kp = key.get_pressed()
-    for e in event.get():
-        if e.type == QUIT:
-            game = False
-        if kp[K_SPACE]:
-            player.fire()
-    if sprite.groupcollide(monsters, bullets, True, True):
-        monster = Monsters("ufo.png", randint(80, 620), 50, randint(1, 10))
-        monsters.add(monster)
-        score += 1
-    clock.tick(FPS)
-    display.update()
